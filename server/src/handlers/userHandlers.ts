@@ -41,13 +41,16 @@ export const signIn = async (
 ): Promise<void> => {
   try {
     const user = await prisma.user.findUnique({
-      where: { email: req.body.email },
+      where: { username: req.body.username },
     })
+    console.log('This is the user', user)
     if (!user) {
+      console.log('No user found')
       res.status(401).json({ message: 'invalid credentials' })
       return
     }
     const isValid = await comparePasswords(req.body.password, user.password)
+    console.log('Is it valid?', isValid)
     if (!isValid) {
       res.status(401).json({ message: 'invalid credentials' })
       return
@@ -55,6 +58,7 @@ export const signIn = async (
     const token = createJWT(user)
     res.json({ token })
   } catch (error) {
+    console.log('Shiiitt')
     res.status(500).json({ message: 'error signing in', error })
     return
   }

@@ -2,7 +2,8 @@ import { Router, Request, Response } from 'express'
 import { body, query, validationResult, oneOf } from 'express-validator'
 import { handleInputErrors } from '../middlewares/middleware'
 import { deleteProduct } from '../handlers/product'
-import { createNewUser } from '../handlers/user'
+import { createNewUser } from '../handlers/userHandlers'
+import { signIn } from '../handlers/userHandlers'
 const userRouter = Router()
 
 userRouter.get('/', (req: Request, res: Response) => {
@@ -21,6 +22,7 @@ userRouter.get('/product', (res: Response) => {
 //   createNewUser
 // })
 userRouter.post('/user/newuser/', createNewUser)
+userRouter.post('/user/signin/', signIn)
 
 // userRouter.post(
 //   '/product/:id',
