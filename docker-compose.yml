@@ -1,11 +1,28 @@
-version: "3.8"
+version: "1"
 
 services:
-  backend:
+  server:
     build:
       context: ./server
       dockerfile: Dockerfile
     restart: unless-stopped
     env_file: ./server/.env
+    networks:
+      - picz
     ports:
       - "3001:3001"
+      - "5555:5555"
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: ./client/.env
+    networks:
+      - picz
+    ports:
+      - "5173:5173"
+
+networks:
+  picz:
+    driver: bridge
