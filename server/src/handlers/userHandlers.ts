@@ -56,9 +56,8 @@ export const signIn = async (
       return
     }
     const token = createJWT(user)
-    res.json({ token })
+    res.json({ token, user })
   } catch (error) {
-    console.log('Shiiitt')
     res.status(500).json({ message: 'error signing in', error })
     return
   }
