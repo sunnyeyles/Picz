@@ -1,8 +1,8 @@
-import { AppShell, Burger, Group, Skeleton } from "@mantine/core";
+import { AppShell, Burger, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { NewNavBar } from "../navbar/NewNavBar";
-import { MantineLogo } from "@mantinex/mantine-logo";
 import { Logo } from "../../assets/Logo";
+import { ColorSchemeToggle } from "../colorSchemeToggle/ColorSchemeToggle";
 
 export const Shell = () => {
   const [opened, { toggle }] = useDisclosure();
@@ -14,11 +14,20 @@ export const Shell = () => {
       padding="md"
     >
       <AppShell.Header>
-        <Group h="100%" px="md">
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          <Logo width="35" height="28" pFontSize="28" iczFontSize="24" />
+        <Group h="100%" px="md" justify="space-between">
+          <Group>
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              hiddenFrom="sm"
+              size="sm"
+            />
+            <Logo width="35" height="28" pFontSize="28" iczFontSize="24" />
+          </Group>
+          <ColorSchemeToggle />
         </Group>
       </AppShell.Header>
+
       <AppShell.Navbar p="md">
         <NewNavBar toggleNavbar={toggle} />
       </AppShell.Navbar>

@@ -3,7 +3,7 @@ import { MantineProvider } from "@mantine/core";
 import { theme } from "./theme";
 import { RouterProvider } from "react-router-dom";
 import { Router } from "./router/router";
-import ColorSchemeContext from "./components/themeToggle/ColorSchemeContext";
+import ColorSchemeContext from "./components/colorSchemeToggle/ColorSchemeContext";
 function App() {
   const [colorScheme, setColorScheme] = useState("light");
 

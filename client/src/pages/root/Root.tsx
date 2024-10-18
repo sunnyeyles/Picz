@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Flex } from "@mantine/core";
 import { Box } from "@mantine/core";
-import { Shell } from "../../components/appshell/AppShell";
+import { Shell } from "../../components/appShell/AppShell";
 import { Footer } from "../../components/footer/Footer";
 export const Root = () => {
   return (

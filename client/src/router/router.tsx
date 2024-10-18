@@ -4,6 +4,7 @@ import { SignInForm } from "../components/signInForm/SignInForm";
 import { Root } from "../pages/root/Root";
 import { Account } from "../pages/account/Account";
 import { UserDetails } from "../pages/userDetails/UserDetails";
+import { ImageUpload } from "../pages/imageUpload/ImageUpload";
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -24,6 +25,10 @@ const routes: RouteObject[] = [
       {
         path: "/userdetails",
         element: <UserDetails />,
+      },
+      {
+        path: "/imageupload",
+        element: <ImageUpload />,
       },
     ],
   },

@@ -1,11 +1,10 @@
 import { createTheme, rem } from "@mantine/core";
+import { Loader } from "@mantine/core";
+import { LoadingSpinner } from "./components/loadingspinner/LoadingSpinner";
 
 export const theme = createTheme({
-  // fontFamily: "Verdana, sans-serif",
   fontFamilyMonospace: "Monaco, Courier, monospace",
-  // headings: { fontFamily: "Greycliff CF, sans-serif" },
   colors: {
-    // custom colors
     deepBlue: [
       "#eef3ff",
       "#dce4f5",
@@ -42,5 +41,13 @@ export const theme = createTheme({
     sizes: {
       h1: { fontSize: rem(36) },
     },
+  },
+  components: {
+    Loader: Loader.extend({
+      defaultProps: {
+        loaders: { ...Loader.defaultLoaders, custom: LoadingSpinner },
+        type: "custom",
+      },
+    }),
   },
 });

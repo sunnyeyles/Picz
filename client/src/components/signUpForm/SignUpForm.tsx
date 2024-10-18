@@ -5,9 +5,10 @@ import {
   Group,
   Container,
   Notification,
+  LoadingOverlay,
 } from "@mantine/core";
 import { useSignupHandler } from "../../hooks/useSignupHandler";
-import { useAppSelector } from "../hooks/utilHooks";
+import { LoadingSpinner } from "../loadingspinner/LoadingSpinner";
 
 interface ISignupFormValues {
   username: string;
@@ -35,11 +36,12 @@ export const SignUpForm = () => {
     useSignupHandler();
 
   const handleSubmit = async (values: ISignupFormValues) => {
-    handleSignup(values, form.reset);
+    handleSignup(values);
   };
 
   return (
     <Container m="md">
+      <LoadingOverlay visible={isLoading} loaderProps={<LoadingSpinner />} />
       {notification && (
         <Notification
           color={notification.color}

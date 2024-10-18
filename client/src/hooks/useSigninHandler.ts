@@ -10,31 +10,26 @@ interface ISigninFormValues {
 
 export const useSigninHandler = () => {
   const dispatch = useDispatch();
-  const [signin] = useSigninMutation();
+  const [signin, { isLoading }] = useSigninMutation();
   const [notification, setNotification] = useState<{
     color: string;
     message: string;
   } | null>(null);
 
-  const handleSignin = async (
-    values: ISigninFormValues,
-    resetForm: () => void
-  ) => {
+  const handleSignin = async (values: ISigninFormValues) => {
     try {
       const result = await signin(values).unwrap();
-      console.log("From the signin hook: ", result);
       const { username, email } = result.user;
       const { token } = result;
       document.cookie = `token=${token}; path=/; max-age=86400; SameSite=Strict; Secure`;
       dispatch(login({ username, email }));
-      setNotification({ color: "green", message: "signin successful!" });
-      resetForm();
+      setNotification({ color: "green", message: "Signin successful!" });
     } catch (err) {
-      let errorMessage = "signin failed!";
       console.log(err);
+      const errorMessage = "signin failed!";
       setNotification({ color: "red", message: errorMessage });
     }
   };
 
-  return { handleSignin, notification, setNotification };
+  return { handleSignin, notification, setNotification, isLoading };
 };

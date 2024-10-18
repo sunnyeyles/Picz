@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useSignupMutation } from "../features/user/userAPI";
 import { useDispatch } from "react-redux";
 import { login } from "../features/user/userSlice";
-import { useUserDetails } from "./utilHooks";
 
 interface ISignupFormValues {
   username: string;
@@ -13,34 +12,27 @@ interface ISignupFormValues {
 
 export const useSignupHandler = () => {
   const dispatch = useDispatch();
-  const [signup, { isLoading, error }] = useSignupMutation();
+  const [signup, { isLoading }] = useSignupMutation();
   const [notification, setNotification] = useState<{
     color: string;
     message: string;
   } | null>(null);
 
-  const handleSignup = async (
-    values: ISignupFormValues,
-    resetForm: () => void
-  ) => {
+  const handleSignup = async (values: ISignupFormValues) => {
     try {
       const result = await signup(values).unwrap();
       setNotification({ color: "green", message: "Signup successful!" });
-      resetForm();
 
       const { token, username, email } = result;
-      document.cookie = `token=${token}; path=/; max-age=${
+      document.cookie = `token=${token}; path=/; msax-age=${
         60 * 60 * 24
       }; SameSite=Strict; Secure`;
 
       dispatch(login({ username, email }));
     } catch (err) {
-      let errorMessage = "Signup failed!";
-      if (error && "status" in error) {
-        errorMessage = (error as any).data?.message || errorMessage;
-      } else if (error && "message" in error) {
-        errorMessage = error.message || errorMessage;
-      }
+      console.log(err);
+      const errorMessage = "Signup failed!";
+
       setNotification({ color: "red", message: errorMessage });
     }
   };

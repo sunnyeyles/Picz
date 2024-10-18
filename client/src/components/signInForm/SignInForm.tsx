@@ -5,9 +5,10 @@ import {
   Group,
   Container,
   Notification,
-  Box,
   Paper,
+  LoadingOverlay,
 } from "@mantine/core";
+import { LoadingSpinner } from "../loadingspinner/LoadingSpinner";
 import { useSigninHandler } from "../../hooks/useSigninHandler";
 
 interface ISignInFormValues {
@@ -23,15 +24,18 @@ export const SignInForm = () => {
     },
   });
 
-  const { handleSignin, notification, setNotification } = useSigninHandler();
+  const { handleSignin, notification, setNotification, isLoading } =
+    useSigninHandler();
 
   const handleSubmit = async (values: ISignInFormValues) => {
     console.log("Handle submit invoked");
-    await handleSignin(values, form.reset);
+    await handleSignin(values);
   };
 
   return (
     <Container m="md">
+      <LoadingOverlay visible={isLoading} loaderProps={<LoadingSpinner />} />
+
       {notification && (
         <Notification
           color={notification.color}
