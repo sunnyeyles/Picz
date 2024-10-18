@@ -27,10 +27,10 @@ export const useSigninHandler = () => {
       const { token } = result;
       document.cookie = `token=${token}; path=/; max-age=86400; SameSite=Strict; Secure`;
       dispatch(login({ username, email }));
-      setNotification({ color: "green", message: "Signin successful!" });
+      setNotification({ color: "green", message: "signin successful!" });
       resetForm();
     } catch (err) {
-      let errorMessage = "Signin failed!";
+      let errorMessage = "signin failed!";
       console.log(err);
       setNotification({ color: "red", message: errorMessage });
     }

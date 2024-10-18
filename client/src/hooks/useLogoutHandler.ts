@@ -10,7 +10,7 @@ export const useLogoutHandler = () => {
       dispatch(logoutAction());
       console.log("Logout successful");
     } catch (err) {
-      console.log("Logout error:", err);
+      console.log("logout error:", err);
     }
   };
 

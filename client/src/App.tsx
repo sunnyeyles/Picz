@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "./theme";
 import { RouterProvider } from "react-router-dom";
