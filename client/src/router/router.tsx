@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
-import { SignUpForm } from "../components/SignUpForm";
+import { SignUpForm } from "../components/signUpForm/SignUpForm";
+import { SignInForm } from "../components/signInForm/SignInForm";
 import { Root } from "../pages/root/Root";
 import { Account } from "../pages/account/Account";
-import { SignInForm } from "../components/SignInForm";
 import { UserDetails } from "../pages/userDetails/UserDetails";
 const routes: RouteObject[] = [
   {

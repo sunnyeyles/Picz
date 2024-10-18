@@ -7,7 +7,6 @@ import {
   IconLicense,
   IconMessage2,
   IconMessages,
-  IconUsers,
   IconFileAnalytics,
   IconReceiptRefund,
   IconLogout,
@@ -31,6 +30,12 @@ interface INavBarProps {
 
 export const NewNavBar = ({ toggleNavbar }: INavBarProps) => {
   const navigate = useNavigate();
+  const logout = useLogoutHandler();
+  const handleLogout = () => {
+    logout();
+    navigate("/signup");
+    toggleNavbar();
+  };
 
   const [active, setActive] = useState("Billing");
 
@@ -74,16 +79,7 @@ export const NewNavBar = ({ toggleNavbar }: INavBarProps) => {
           <span>Change account</span>
         </a>
 
-        <a
-          href="#"
-          className={classes.link}
-          onClick={(event) => {
-            event.preventDefault();
-            useLogoutHandler();
-            navigate("/signup");
-            toggleNavbar();
-          }}
-        >
+        <a href="#" className={classes.link} onClick={handleLogout}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </a>

@@ -6,7 +6,7 @@ import {
   Container,
   Notification,
 } from "@mantine/core";
-import { useSignupHandler } from "../hooks/useSignupHandler";
+import { useSignupHandler } from "../../hooks/useSignupHandler";
 import { useAppSelector } from "../hooks/utilHooks";
 
 interface ISignupFormValues {

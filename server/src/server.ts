@@ -1,5 +1,4 @@
 import express, { Request, Response, NextFunction } from 'express'
-import router from './routes/router'
 import morgan from 'morgan'
 import cors from 'cors'
 import { protect } from './modules/auth'

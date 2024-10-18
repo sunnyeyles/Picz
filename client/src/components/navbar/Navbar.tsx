@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Tooltip, UnstyledButton, Stack, rem } from "@mantine/core";
 import { useLogoutHandler } from "../../hooks/useLogoutHandler";
 import { useNavigate } from "react-router-dom";
+import { LogOutBtn } from "../ui/LogOutBtn";
 import {
   IconHome2,
   IconGauge,
@@ -55,6 +56,10 @@ export const Navbar = () => {
   const [active, setActive] = useState(2);
   const handleLogout = useLogoutHandler();
 
+  const onLogoutClick = () => {
+    handleLogout();
+  };
+
   const links = mockdata.map((link, index) => (
     <NavbarLink
       {...link}
@@ -74,10 +79,10 @@ export const Navbar = () => {
           {links}
         </Stack>
       </div>
-
+      <LogOutBtn />
       <Stack justify="center" gap={0}>
         <NavbarLink icon={IconSwitchHorizontal} label="Change account" />
-        <NavbarLink icon={IconLogout} label="Logout" onClick={handleLogout} />
+        <NavbarLink icon={IconLogout} label="Logout" onClick={onLogoutClick} />
       </Stack>
     </nav>
   );
