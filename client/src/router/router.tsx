@@ -5,6 +5,7 @@ import { Root } from "../pages/root/Root";
 import { Account } from "../pages/account/Account";
 import { UserDetails } from "../pages/userDetails/UserDetails";
 import { ImageUpload } from "../pages/imageUpload/ImageUpload";
+import { Settings } from "../pages/settings/Settings";
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -29,6 +30,10 @@ const routes: RouteObject[] = [
       {
         path: "/imageupload",
         element: <ImageUpload />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
       },
     ],
   },
