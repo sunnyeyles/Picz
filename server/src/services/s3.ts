@@ -5,7 +5,7 @@ const secretKey = process.env.AWS_SECRET_ACCESS_KEY
 
 interface IImage {
   key: string
-  body: string
+  body: Buffer
 }
 
 export const s3Client = new S3Client({
@@ -23,6 +23,7 @@ export const uploadNewImage = async ({ key, body }: IImage) => {
         Bucket: 'picz-image-upload-platform',
         Key: key,
         Body: body,
+        ContentType: 'image/jpeg',
       })
     )
     return

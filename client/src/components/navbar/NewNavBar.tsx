@@ -3,24 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { Text } from "@mantine/core";
 import { useLogoutHandler } from "../../hooks/useLogoutHandler";
 import {
-  IconShoppingCart,
-  IconLicense,
   IconMessage2,
   IconMessages,
-  IconFileAnalytics,
   IconReceiptRefund,
   IconLogout,
   IconSwitchHorizontal,
   IconUser,
   IconPhotoUp,
-  IconPhotoFilled,
   IconLibraryPhoto,
   IconSettings,
 } from "@tabler/icons-react";
 import classes from "./newnavbar.module.css";
 
 const navValues = [
-  { label: "Upload Image", icon: IconPhotoUp, route: "/" },
+  { label: "Upload Image", icon: IconPhotoUp, route: "/imageupload" },
   { label: "My Images", icon: IconLibraryPhoto, route: "/signin" },
   { label: "Reviews", icon: IconMessage2, route: "/signup" },
   { label: "Messages", icon: IconMessages, route: "/" },

@@ -28,7 +28,6 @@ export const SignInForm = () => {
     useSigninHandler();
 
   const handleSubmit = async (values: ISignInFormValues) => {
-    console.log("Handle submit invoked");
     await handleSignin(values);
   };
 
