@@ -6,7 +6,6 @@ import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
 import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import { useImageUploadHandler } from "../../hooks/useImageUploadHandler";
 
-const isLoading = false;
 export const ImageUploadDropzone = (props: Partial<DropzoneProps>) => {
   const [file, setFile] = useState<File | null>(null);
   const handleDrop = (droppedFiles: File[]) => {

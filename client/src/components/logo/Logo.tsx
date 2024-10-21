@@ -1,8 +1,8 @@
 interface ILogoProps {
   width: string;
   height: string;
-  pFontSize: string;
-  iczFontSize: string;
+  pFontSize?: string;
+  iczFontSize?: string;
 }
 
 export const Logo = ({ width, height, pFontSize, iczFontSize }: ILogoProps) => (

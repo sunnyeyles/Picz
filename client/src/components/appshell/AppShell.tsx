@@ -1,7 +1,7 @@
 import { AppShell, Burger, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { NewNavBar } from "../navbar/NewNavBar";
-import { Logo } from "../../assets/Logo";
+import { Logo } from "../logo/Logo";
 import { ColorSchemeToggle } from "../colorSchemeToggle/ColorSchemeToggle";
 
 export const Shell = () => {

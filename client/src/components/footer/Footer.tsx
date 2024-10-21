@@ -1,7 +1,6 @@
 import { Container, Group, Anchor } from "@mantine/core";
 import classes from "./footer.module.css";
-import { Logo } from "../../assets/Logo";
-
+import { Logo } from "../logo/Logo";
 const links = [
   { link: "#", label: "Contact" },
   { link: "#", label: "Privacy" },
@@ -13,7 +12,6 @@ export const Footer = () => {
   const items = links.map((link) => (
     <Anchor<"a">
       c="dimmed"
-      key={link.label}
       href={link.link}
       onClick={(event) => event.preventDefault()}
       size="sm"
