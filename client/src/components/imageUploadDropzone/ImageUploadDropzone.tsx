@@ -1,9 +1,9 @@
 import "@mantine/dropzone/styles.css";
 import { useState } from "react";
+import { FormEvent } from "react";
 import { Group, Text, rem, Button } from "@mantine/core";
 import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
 import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from "@mantine/dropzone";
-import { useUploadImageMutation } from "../../features/image/imageAPI";
 import { useImageUploadHandler } from "../../hooks/useImageUploadHandler";
 
 const isLoading = false;
@@ -14,7 +14,7 @@ export const ImageUploadDropzone = (props: Partial<DropzoneProps>) => {
     setFile(droppedFiles.length > 0 ? droppedFiles[0] : null);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (file) {
       await handleImageUpload(file);

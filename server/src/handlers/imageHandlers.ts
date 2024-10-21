@@ -2,7 +2,6 @@ import multer from 'multer'
 import { uploadNewImage } from '../services/s3'
 import { Request, Response } from 'express'
 
-// Configure multer to handle the file upload
 const upload = multer()
 
 interface IRequestWithImage extends Request {
