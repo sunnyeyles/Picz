@@ -1,5 +1,5 @@
 import { ImageUploadDropzone } from "../../components/imageUploadDropzone/ImageUploadDropzone";
-export const ImageUpload = () => {
+const ImageUpload = () => {
   return (
     <div>
       <div>New Image</div>
@@ -7,3 +7,4 @@ export const ImageUpload = () => {
     </div>
   );
 };
+export default ImageUpload;

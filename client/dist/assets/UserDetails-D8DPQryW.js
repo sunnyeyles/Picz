@@ -1,0 +1,1 @@
+import{j as e}from"./index-Cxj4aO93.js";import"./__commonjsHelpers__-CqkleIqs.js";const s=({heading:i})=>e.jsx("div",{children:e.jsx("h2",{children:i})}),t=()=>e.jsxs("div",{children:[e.jsx("div",{children:e.jsx(s,{heading:"Update email"})}),e.jsx("div",{children:e.jsx(s,{heading:"Update password"})})]});export{t as default};

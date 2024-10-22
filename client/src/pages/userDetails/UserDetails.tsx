@@ -1,5 +1,5 @@
 import { UpdateUserDetails } from "../../components/updateUserDetails/UpdateUserDetails";
-export const UserDetails = () => {
+const UserDetails = () => {
   return (
     <div>
       <div>
@@ -11,3 +11,4 @@ export const UserDetails = () => {
     </div>
   );
 };
+export default UserDetails;

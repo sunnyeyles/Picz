@@ -17,7 +17,7 @@ interface ISignupFormValues {
   confirmPassword?: string;
 }
 
-export const SignUpForm = () => {
+const SignUpForm = () => {
   const form = useForm<ISignupFormValues>({
     initialValues: {
       username: "",
@@ -87,3 +87,4 @@ export const SignUpForm = () => {
     </Container>
   );
 };
+export default SignUpForm;

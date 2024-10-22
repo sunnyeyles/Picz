@@ -16,7 +16,7 @@ interface ISignInFormValues {
   password: string;
 }
 
-export const SignInForm = () => {
+const SignInForm = () => {
   const form = useForm<ISignInFormValues>({
     initialValues: {
       username: "",
@@ -66,3 +66,4 @@ export const SignInForm = () => {
     </Container>
   );
 };
+export default SignInForm;

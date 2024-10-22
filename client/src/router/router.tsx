@@ -1,35 +1,62 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
-import { SignUpForm } from "../components/signUpForm/SignUpForm";
-import { SignInForm } from "../components/signInForm/SignInForm";
-import { Root } from "../pages/root/Root";
-import { Account } from "../pages/account/Account";
-import { UserDetails } from "../pages/userDetails/UserDetails";
-import { ImageUpload } from "../pages/imageUpload/ImageUpload";
-import { Settings } from "../pages/settings/Settings";
+import { lazy, Suspense } from "react";
+
+const Root = lazy(() => import("../pages/root/Root"));
+const ImageUpload = lazy(() => import("../pages/imageUpload/ImageUpload"));
+const UserDetails = lazy(() => import("../pages/userDetails/UserDetails"));
+const Settings = lazy(() => import("../pages/settings/Settings"));
+const SignUpForm = lazy(() => import("../components/signUpForm/SignUpForm"));
+const SignInForm = lazy(() => import("../components/signInForm/SignInForm"));
+const Account = lazy(() => import("../pages/account/Account"));
+
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Root />,
+    element: (
+      <Suspense>
+        <Root />
+      </Suspense>
+    ),
     children: [
       {
         path: "/signup",
-        element: <SignUpForm />,
+        element: (
+          <Suspense>
+            <SignUpForm />
+          </Suspense>
+        ),
       },
       {
         path: "/signin",
-        element: <SignInForm />,
+        element: (
+          <Suspense>
+            <SignInForm />
+          </Suspense>
+        ),
       },
       {
         path: "/account",
-        element: <Account />,
+        element: (
+          <Suspense>
+            <Account />
+          </Suspense>
+        ),
       },
       {
         path: "/userdetails",
-        element: <UserDetails />,
+        element: (
+          <Suspense>
+            <UserDetails />
+          </Suspense>
+        ),
       },
       {
         path: "/imageupload",
-        element: <ImageUpload />,
+        element: (
+          <Suspense>
+            <ImageUpload />
+          </Suspense>
+        ),
       },
       {
         path: "/settings",

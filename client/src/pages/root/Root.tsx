@@ -3,7 +3,8 @@ import { Flex } from "@mantine/core";
 import { Box } from "@mantine/core";
 import { Shell } from "../../components/appShell/AppShell";
 import { Footer } from "../../components/footer/Footer";
-export const Root = () => {
+
+const Root = () => {
   return (
     <Box>
       <Shell />
@@ -21,3 +22,4 @@ export const Root = () => {
     </Box>
   );
 };
+export default Root;
