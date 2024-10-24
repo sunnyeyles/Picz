@@ -25,7 +25,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build --platform linux/arm64/v8 -t sunnyeyles/picz-client:1 .
+          docker build --platform linux/arm64/v8 -t sunnyeyles/picz-client:1 -f ./client/Dockerfile ./client
 
       - name: Run container with env variables
         run: |
