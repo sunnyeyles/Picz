@@ -26,7 +26,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t sunnyeyles/picz-client:1
+          docker build -t sunnyeyles/picz-client:1 ./client # Specify the path to the Dockerfile or build context
 
       - name: Run container with env variables
         run: |
