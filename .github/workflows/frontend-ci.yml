@@ -29,7 +29,7 @@ jobs:
 
       - name: Run container with env variables
         run: |
-          docker run --rm --platform linux/amd64 \
+          docker run --rm --platform linux/amd64/v8 \
             -e VITE_API_URL=${{ secrets.VITE_API_BASE_URL }} \
             -p 5173:5173 \
             sunnyeyles/picz-client:1
