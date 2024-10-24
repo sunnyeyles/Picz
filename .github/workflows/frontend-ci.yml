@@ -26,11 +26,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build --platform linux/arm64 -t sunnyeyles/picz-client:1 -f ./client/Dockerfile ./client
+          docker build -t sunnyeyles/picz-client:1
 
       - name: Run container with env variables
         run: |
-          docker run --rm --platform linux/arm64 \
+          docker run \
             -e VITE_API_URL=${{ secrets.VITE_API_BASE_URL }} \
             -p 5173:5173 \
             sunnyeyles/picz-client:1
