@@ -24,9 +24,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image
+      - name: Build Docker image (staging)
         run: |
-          docker build -t sunnyeyles/picz-client:1 ./client
+          docker build --target staging -t sunnyeyles/picz-client:staging ./client
 
       - name: Run container with env variables
         run: |
