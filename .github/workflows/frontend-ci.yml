@@ -24,13 +24,13 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image (staging)
+      - name: Build image (staging)
         run: |
-          docker build --target staging -t sunnyeyles/picz-client:staging ./client
+          docker build -t sunnyeyles/picz-client:staging ./client
 
       - name: Run container with env variables
         run: |
           docker run --rm \
             -e VITE_API_URL=${{ secrets.VITE_API_BASE_URL }} \
             -p 5173:5173 \
-            sunnyeyles/picz-client:1
+            sunnyeyles/picz-client:staging
