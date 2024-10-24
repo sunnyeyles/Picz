@@ -17,6 +17,14 @@ const routes: RouteObject[] = [
         <Root />
       </Suspense>
     ),
+
+    // path: "/",
+    // element: (
+    //   <Suspense>
+    //     <Hero />
+    //   </Suspense>
+    // ),
+
     children: [
       {
         path: "/signup",
@@ -60,7 +68,12 @@ const routes: RouteObject[] = [
       },
       {
         path: "/settings",
-        element: <Settings />,
+
+        element: (
+          <Suspense>
+            <Settings />
+          </Suspense>
+        ),
       },
     ],
   },

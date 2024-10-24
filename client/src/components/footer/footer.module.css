@@ -13,11 +13,14 @@
 
   @media (max-width: var(--mantine-breakpoint-xs)) {
     flex-direction: column;
+    justify-content: center;
   }
 }
 
 .links {
   @media (max-width: var(--mantine-breakpoint-xs)) {
     margin-top: var(--mantine-spacing-md);
+    display: flex;
+    flex-grow: 1;
   }
 }

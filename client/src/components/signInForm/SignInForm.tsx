@@ -29,6 +29,7 @@ const SignInForm = () => {
 
   const handleSubmit = async (values: ISignInFormValues) => {
     await handleSignin(values);
+    form.reset();
   };
 
   return (
@@ -43,7 +44,7 @@ const SignInForm = () => {
           {notification.message}
         </Notification>
       )}
-      <Paper bd=".1px solid gray.8" p="md" radius="sm" shadow="xl">
+      <Paper bd="1px solid blue.8" p="lg" radius="sm">
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <TextInput
             mt="md"

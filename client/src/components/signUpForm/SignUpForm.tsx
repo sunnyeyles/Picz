@@ -6,6 +6,7 @@ import {
   Container,
   Notification,
   LoadingOverlay,
+  Paper,
 } from "@mantine/core";
 import { useSignupHandler } from "../../hooks/useSignupHandler";
 import { LoadingSpinner } from "../loadingspinner/LoadingSpinner";
@@ -37,6 +38,7 @@ const SignUpForm = () => {
 
   const handleSubmit = async (values: ISignupFormValues) => {
     handleSignup(values);
+    form.reset();
   };
 
   return (
@@ -50,40 +52,42 @@ const SignUpForm = () => {
           {notification.message}
         </Notification>
       )}
-      <form onSubmit={form.onSubmit(handleSubmit)}>
-        <TextInput
-          mt="md"
-          label="Username"
-          placeholder="Username"
-          {...form.getInputProps("username")}
-        />
-        <TextInput
-          mt="md"
-          label="Email"
-          placeholder="Email"
-          {...form.getInputProps("email")}
-        />
-        <TextInput
-          mt="md"
-          label="Password"
-          placeholder="Password"
-          type="password"
-          {...form.getInputProps("password")}
-        />
-        <TextInput
-          mt="md"
-          label="Confirm Password"
-          placeholder="Confirm Password"
-          type="password"
-          {...form.getInputProps("confirmPassword")}
-        />
+      <Paper bd="1px solid blue.8" p="lg" radius="sm">
+        <form onSubmit={form.onSubmit(handleSubmit)}>
+          <TextInput
+            mt="md"
+            label="Username"
+            placeholder="Username"
+            {...form.getInputProps("username")}
+          />
+          <TextInput
+            mt="md"
+            label="Email"
+            placeholder="Email"
+            {...form.getInputProps("email")}
+          />
+          <TextInput
+            mt="md"
+            label="Password"
+            placeholder="Password"
+            type="password"
+            {...form.getInputProps("password")}
+          />
+          <TextInput
+            mt="md"
+            label="Confirm Password"
+            placeholder="Confirm Password"
+            type="password"
+            {...form.getInputProps("confirmPassword")}
+          />
 
-        <Group justify="center" mt="xl">
-          <Button type="submit" loading={isLoading}>
-            Sign Up
-          </Button>
-        </Group>
-      </form>
+          <Group justify="center" mt="xl">
+            <Button type="submit" loading={isLoading}>
+              Sign Up
+            </Button>
+          </Group>
+        </form>
+      </Paper>
     </Container>
   );
 };

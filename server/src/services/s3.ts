@@ -26,6 +26,7 @@ export const uploadNewImage = async ({ key, body }: IImage) => {
         ContentType: 'image/jpeg',
       })
     )
+    console.log('S3 Upload Response:', Response)
     return
   } catch (err) {
     console.log(err)

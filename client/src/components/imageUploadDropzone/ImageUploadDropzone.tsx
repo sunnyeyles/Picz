@@ -7,17 +7,18 @@ import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import { useImageUploadHandler } from "../../hooks/useImageUploadHandler";
 
 export const ImageUploadDropzone = (props: Partial<DropzoneProps>) => {
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
+
   const handleDrop = (droppedFiles: File[]) => {
-    console.log("accepted files", droppedFiles);
-    setFile(droppedFiles.length > 0 ? droppedFiles[0] : null);
+    setFiles((prevFiles) => [...prevFiles, ...droppedFiles]);
+    console.log(droppedFiles);
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (file) {
-      await handleImageUpload(file);
-      setFile(null);
+    if (files.length > 0) {
+      await Promise.all(files.map(() => handleImageUpload(files)));
+      setFiles([]);
     }
   };
 
@@ -35,7 +36,7 @@ export const ImageUploadDropzone = (props: Partial<DropzoneProps>) => {
         <Dropzone
           loading={isLoading}
           onDrop={handleDrop}
-          onReject={(files) => console.log("rejected files", files)}
+          onReject={(files) => console.log("Rejected files:", files)}
           maxSize={5 * 1024 ** 2}
           accept={IMAGE_MIME_TYPE}
           {...props}
@@ -82,13 +83,19 @@ export const ImageUploadDropzone = (props: Partial<DropzoneProps>) => {
                 Drag images here or click to select files
               </Text>
               <Text size="sm" c="dimmed" inline mt={7}>
-                Attach as many files as you like, each file should not exceed
-                5mb
+                The file should not exceed 5MB
               </Text>
             </div>
           </Group>
         </Dropzone>
-        <Button type="submit">Upload</Button>
+        {files.length > 0 && (
+          <Text ta="center" fz="md" mt="xs" c="dimmed">
+            {`Selected files: ${files.map((file) => file.name).join(", ")}`}
+          </Text>
+        )}
+        <Button type="submit" loading={isLoading}>
+          Upload
+        </Button>{" "}
       </form>
 
       {notification && (

@@ -1,4 +1,4 @@
-import jwt, { JwtPayload } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import { Request, Response, NextFunction } from 'express'
 import bcrypt from 'bcrypt'
 import { User } from '@prisma/client'
@@ -10,18 +10,15 @@ interface IUserJWT {
   username: string
 }
 
-// Extend the Express Request to include the user
 interface IAuthenticatedRequest extends Request {
   user?: IUserJWT
 }
 
-// create JWT
 export const createJWT = (user: User) => {
   const token = jwt.sign({ id: user.id, username: user.username }, jwtSecret)
   return token
 }
 
-// protect routes
 export const protect = (
   req: IAuthenticatedRequest,
   res: Response,
@@ -35,14 +32,12 @@ export const protect = (
     res.json({ message: 'not authorized, no bearer' })
     return
   }
-
   const [, token] = bearer.split(' ')
   if (!token) {
     res.status(401)
     res.json({ message: 'not authorized, no token' })
     return
   }
-
   try {
     const payload = jwt.verify(token, jwtSecret) as IUserJWT
     req.user = { id: payload.id, username: payload.username }
@@ -55,12 +50,11 @@ export const protect = (
     return
   }
 }
-// compare password
+
 export const comparePasswords = (password: string, hash: string) => {
   return bcrypt.compare(password, hash)
 }
 
-// hash password
 export const hashPassword = (password: string): Promise<string> => {
   return bcrypt.hash(password, 5)
 }

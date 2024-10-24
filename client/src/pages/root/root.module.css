@@ -1,3 +1,15 @@
-.layout {
-  display: flex;
+.mobile {
+  flex-grow: 1;
+  margin-left: 0;
+}
+.desktop {
+  flex-grow: 1;
+  margin-left: 250px;
+}
+.hero {
+  position: relative;
+  background-image: url(../../assets/wolfgang-hasselmann-18DxNRIEga4-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
 }

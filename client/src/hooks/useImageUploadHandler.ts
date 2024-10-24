@@ -8,17 +8,20 @@ export const useImageUploadHandler = () => {
     message: string;
   } | null>(null);
 
-  const handleImageUpload = async (file: File) => {
-    const formData = new FormData();
-    formData.append("file", file);
-
+  const handleImageUpload = async (files: File[]) => {
     try {
-      const result = await uploadImage(formData).unwrap();
-      console.log(result);
-      setNotification({ color: "green", message: "Upload successful!" });
+      const uploadPromises = files.map(async (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        return uploadImage(formData).unwrap();
+      });
+
+      await Promise.all(uploadPromises);
+      setNotification({ color: "green", message: "All uploads successful!" });
     } catch (err) {
       console.error(err);
-      setNotification({ color: "red", message: "Image upload failed!" });
+      setNotification({ color: "red", message: "One or more uploads failed!" });
     }
   };
 

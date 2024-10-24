@@ -3,9 +3,7 @@ import classes from "./footer.module.css";
 import { Logo } from "../logo/Logo";
 const links = [
   { link: "#", label: "Contact" },
-  { link: "#", label: "Privacy" },
-  { link: "#", label: "Blog" },
-  { link: "#", label: "Careers" },
+  { link: "#sunyeyles.com", label: "sunnyeyles.com" },
 ];
 
 export const Footer = () => {
@@ -15,6 +13,7 @@ export const Footer = () => {
       href={link.link}
       onClick={(event) => event.preventDefault()}
       size="sm"
+      key={link.label}
     >
       {link.label}
     </Anchor>
@@ -23,7 +22,9 @@ export const Footer = () => {
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-        <Logo width="35" height="35" />
+        <Container visibleFrom="sm">
+          <Logo width="22" height="22" />
+        </Container>
         <Group className={classes.links}>{items}</Group>
       </Container>
     </div>

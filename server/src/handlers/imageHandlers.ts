@@ -1,6 +1,7 @@
 import multer from 'multer'
 import { uploadNewImage } from '../services/s3'
 import { Request, Response } from 'express'
+import { randomUUID } from 'crypto'
 
 const upload = multer()
 
@@ -17,24 +18,24 @@ export const uploadImage = async (
       if (err) {
         return res
           .status(500)
-          .json({ message: 'Error uploading file', error: err })
+          .json({ message: 'error uploading file', error: err })
       }
 
       if (!req.file) {
-        return res.status(400).json({ message: 'Did not get file' })
+        return res.status(400).json({ message: 'did not get file' })
       }
 
       const fileBuffer = req.file.buffer
-      const fileKey = req.file.originalname
+      const fileKey = randomUUID()
 
       await uploadNewImage({
         key: fileKey,
         body: fileBuffer,
       })
 
-      res.status(200).json({ message: 'Image successfully uploaded' })
+      res.status(200).json({ message: 'image successfully uploaded' })
     })
   } catch (error) {
-    res.status(500).json({ message: 'Error uploading image', error })
+    res.status(500).json({ message: 'error uploading image', error })
   }
 }
