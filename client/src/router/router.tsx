@@ -13,23 +13,15 @@ const routes: RouteObject[] = [
   {
     path: "/",
     element: (
-      <Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
         <Root />
       </Suspense>
     ),
-
-    // path: "/",
-    // element: (
-    //   <Suspense>
-    //     <Hero />
-    //   </Suspense>
-    // ),
-
     children: [
       {
         path: "/signup",
         element: (
-          <Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
             <SignUpForm />
           </Suspense>
         ),
@@ -37,7 +29,7 @@ const routes: RouteObject[] = [
       {
         path: "/signin",
         element: (
-          <Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
             <SignInForm />
           </Suspense>
         ),
@@ -45,7 +37,7 @@ const routes: RouteObject[] = [
       {
         path: "/account",
         element: (
-          <Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
             <Account />
           </Suspense>
         ),
@@ -53,7 +45,7 @@ const routes: RouteObject[] = [
       {
         path: "/userdetails",
         element: (
-          <Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
             <UserDetails />
           </Suspense>
         ),
@@ -61,7 +53,7 @@ const routes: RouteObject[] = [
       {
         path: "/imageupload",
         element: (
-          <Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
             <ImageUpload />
           </Suspense>
         ),
@@ -70,7 +62,7 @@ const routes: RouteObject[] = [
         path: "/settings",
 
         element: (
-          <Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
             <Settings />
           </Suspense>
         ),

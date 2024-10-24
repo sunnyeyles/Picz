@@ -1,0 +1,39 @@
+name: Frontend CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Pull image
+        run: |
+          docker pull sunnyeyles/picz-client:latest
+
+      - name: Run container with env variables
+        run: |
+          docker run --rm \
+            -e VITE_API_URL=${{ secrets.VITE_API_BASE_URL }} \
+            -e NODE_ENV=development \
+            -p 5173:5173 \
+            sunnyeyles/picz-client:latest
+
+      - name: Build Docker image
+        run: |
+          docker build -t sunnyeyles/picz-client:latest .
