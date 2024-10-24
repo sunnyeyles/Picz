@@ -1,4 +1,4 @@
-FROM node:18-bullseye
+FROM --platform=linux/arm64 node:20-bullseye
 
 WORKDIR /app
 
@@ -9,7 +9,5 @@ RUN npm ci --force
 COPY . .
 
 EXPOSE 5173
-
-RUN npm rebuild
 
 CMD ["npm", "run", "dev", "--", "--host"]
