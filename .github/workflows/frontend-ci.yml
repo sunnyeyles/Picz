@@ -23,9 +23,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Pull image
+      - name: Build Docker image
         run: |
-          docker pull sunnyeyles/picz-client:1
+          docker build --platform linux/arm64/v8 -t sunnyeyles/picz-client:1 .
 
       - name: Run container with env variables
         run: |
@@ -33,7 +33,3 @@ jobs:
             -e VITE_API_URL=${{ secrets.VITE_API_BASE_URL }} \
             -p 5173:5173 \
             sunnyeyles/picz-client:1
-
-      - name: Build Docker image
-        run: |
-          docker build -t sunnyeyles/picz-client:1 .
