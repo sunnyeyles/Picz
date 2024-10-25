@@ -1,15 +1,19 @@
-FROM node:18-bullseye
-
+FROM node:20-bullseye AS base
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-
-RUN npm ci --force
+RUN npm ci
 
 COPY . .
 
+FROM base AS dev
 EXPOSE 5173
-
-RUN npm rebuild
-
 CMD ["npm", "run", "dev", "--", "--host"]
+
+
+FROM base AS staging
+RUN npm run build
+
+
+FROM base AS prod
+CMD ["npm", "run", "build"]
