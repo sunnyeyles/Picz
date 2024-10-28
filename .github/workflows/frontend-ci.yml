@@ -26,7 +26,7 @@ jobs:
 
       - name: Build image (staging)
         run: |
-          docker build -t sunnyeyles/picz-client:staging ./client
+          docker build -t sunnyeyles/picz-client:staging .
 
       - name: Run container with env variables
         run: |
