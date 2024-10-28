@@ -33,5 +33,5 @@ jobs:
           docker run --rm \
             -e VITE_API_URL=${{ secrets.VITE_API_BASE_URL }} \
             -p 5173:5173 \
-            --platform linux/amd64 \  # Change to your architecture if needed
+            --platform linux/amd64 \
             sunnyeyles/picz-client:staging
