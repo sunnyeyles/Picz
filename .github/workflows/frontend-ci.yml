@@ -31,7 +31,7 @@ jobs:
       - name: Run container with environment variables
         run: |
           docker run --rm \
-            --platform linux/arm64/v8 \  # Specify the platform
             -e VITE_API_URL=${{ secrets.VITE_API_BASE_URL }} \
             -p 5173:5173 \
+            --platform linux/amd64 \  # Change to your architecture if needed
             sunnyeyles/picz-client:staging
