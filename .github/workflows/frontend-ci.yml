@@ -24,11 +24,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build image (staging)
+      - name: Pull image from Docker Hub
         run: |
-          docker build -t sunnyeyles/picz-client:staging .
+          docker pull sunnyeyles/picz-client:staging
 
-      - name: Run container with env variables
+      - name: Run container with environment variables
         run: |
           docker run --rm \
             -e VITE_API_URL=${{ secrets.VITE_API_BASE_URL }} \
