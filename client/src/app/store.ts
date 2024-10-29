@@ -11,10 +11,10 @@ export const store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
     image: imageReducer,
     [imageApi.reducerPath]: imageApi.reducer,
-  // },
+  },
 
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(userApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(userApi.middleware),
   devTools: environment !== "production",
 });
 
