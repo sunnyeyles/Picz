@@ -56,7 +56,7 @@ const routes: RouteObject[] = [
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <ImageUpload />
-          {/* </Suspense> */}
+          </Suspense>
         ),
       },
       {
