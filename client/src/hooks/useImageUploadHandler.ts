@@ -6,7 +6,7 @@ export const useImageUploadHandler = () => {
   const [notification, setNotification] = useState<{
     color: string;
     message: string;
-  } | null>(null);!
+  } | null>(null);
 
   const handleImageUpload = async (files: File[]) => {
     try {
