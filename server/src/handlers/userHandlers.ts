@@ -2,8 +2,8 @@ import { Request, Response } from 'express'
 import { hashPassword, comparePasswords } from '../modules/auth'
 import { createJWT } from '../modules/auth'
 import prisma from '../modules/db'
-import { User } from '@prisma/client'
-
+import { Prisma, User } from '@prisma/client'
+import { handleDbErrors } from './utils'
 interface IRequestWithUser extends Request {
   user?: User
 }
@@ -13,10 +13,7 @@ export const createNewUser = async (
   req: IRequestWithUser,
   res: Response
 ): Promise<void> => {
-  console.log(req.body)
-
   try {
-    console.log(req.body)
     const hashedPassword = await hashPassword(req.body.password)
     const user = await prisma.user.create({
       data: {
@@ -26,11 +23,26 @@ export const createNewUser = async (
       },
     })
     const token = createJWT(user)
-    res.status(201).json({ token, username: user.username, email: user.email })
+    res.status(201).json({
+      message: 'user created successfully',
+      user: {
+        token,
+        username: user.username,
+        email: user.email,
+      },
+    })
     return
-  } catch (error) {
-    res.status(500).json({ message: 'error creating user', error })
-    return
+  } catch (e) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
+      if (e.code === 'P2002') {
+        res.status(409).json({ error: 'user already exists' })
+        return
+      } else {
+        handleDbErrors(e, res)
+        return
+      }
+    }
+    throw e
   }
 }
 
@@ -43,22 +55,29 @@ export const signIn = async (
     const user = await prisma.user.findUnique({
       where: { username: req.body.username },
     })
-    console.log('This is the user', user)
+
     if (!user) {
-      console.log('No user found')
-      res.status(401).json({ message: 'invalid credentials' })
+      res.status(401).json({ error: 'Invalid credentials' })
       return
     }
+
     const isValid = await comparePasswords(req.body.password, user.password)
-    console.log('Is it valid?', isValid)
     if (!isValid) {
-      res.status(401).json({ message: 'invalid credentials' })
+      res.status(401).json({ error: 'Invalid credentials' })
       return
     }
+
     const token = createJWT(user)
-    res.json({ token, user })
+
+    res.status(200).json({
+      message: 'User signed in successfully',
+      user: {
+        token,
+        username: user.username,
+        email: user.email,
+      },
+    })
   } catch (error) {
-    res.status(500).json({ message: 'error signing in', error })
-    return
+    handleDbErrors(error, res)
   }
 }

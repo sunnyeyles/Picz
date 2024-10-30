@@ -9,7 +9,6 @@ import {
   Paper,
 } from "@mantine/core";
 import { useSignupHandler } from "../../hooks/useSignupHandler";
-import { LoadingSpinner } from "../loadingspinner/LoadingSpinner";
 
 interface ISignupFormValues {
   username: string;
@@ -43,7 +42,10 @@ const SignUpForm = () => {
 
   return (
     <Container m="md">
-      <LoadingOverlay visible={isLoading} loaderProps={<LoadingSpinner />} />
+      <LoadingOverlay
+        visible={isLoading}
+        loaderProps={{ size: "lg", color: "blue" }}
+      />
       {notification && (
         <Notification
           color={notification.color}
