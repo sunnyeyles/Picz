@@ -9,7 +9,6 @@ import {
   Paper,
 } from "@mantine/core";
 import { useSignupHandler } from "../../hooks/useSignupHandler";
-import { LoadingSpinner } from "../loadingspinner/LoadingSpinner";
 
 interface ISignupFormValues {
   username: string;
