@@ -43,7 +43,10 @@ const SignUpForm = () => {
 
   return (
     <Container m="md">
-      <LoadingOverlay visible={isLoading} loaderProps={<LoadingSpinner />} />
+      <LoadingOverlay
+        visible={isLoading}
+        loaderProps={{ size: "lg", color: "blue" }}
+      />
       {notification && (
         <Notification
           color={notification.color}
