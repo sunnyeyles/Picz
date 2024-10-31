@@ -1,4 +1,4 @@
-import{r as e,j as d}from"./index-Bgmcq9v8.js";function g(c){const l=e.createContext(null);return[({children:t,value:s})=>d.jsx(l.Provider,{value:s,children:t}),()=>{const t=e.useContext(l);if(t===null)throw new Error(c);return t}]}function p(c=!1,l){const{onOpen:r,onClose:o}={},[t,s]=e.useState(c),a=e.useCallback(()=>{s(n=>n||(r==null||r(),!0))},[r]),u=e.useCallback(()=>{s(n=>n&&(o==null||o(),!1))},[o]),i=e.useCallback(()=>{t?u():a()},[u,a,t]);return[t,{open:a,close:u,toggle:i}]}/**
+import{r as e,j as d}from"./index-jdee_lUX.js";function g(c){const l=e.createContext(null);return[({children:t,value:s})=>d.jsx(l.Provider,{value:s,children:t}),()=>{const t=e.useContext(l);if(t===null)throw new Error(c);return t}]}function p(c=!1,l){const{onOpen:r,onClose:o}={},[t,s]=e.useState(c),a=e.useCallback(()=>{s(n=>n||(r==null||r(),!0))},[r]),u=e.useCallback(()=>{s(n=>n&&(o==null||o(),!1))},[o]),i=e.useCallback(()=>{t?u():a()},[u,a,t]);return[t,{open:a,close:u,toggle:i}]}/**
  * @license @tabler/icons-react v3.19.0 - MIT
  *
  * This source code is licensed under the MIT license.

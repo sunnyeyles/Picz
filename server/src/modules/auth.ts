@@ -25,8 +25,6 @@ export const protect = (
   next: NextFunction
 ) => {
   const bearer = req.headers.authorization
-  console.log('headers', req.headers)
-
   if (!bearer) {
     res.status(401)
     res.json({ message: 'not authorized, no bearer' })
@@ -44,9 +42,7 @@ export const protect = (
     next()
     return
   } catch (e) {
-    console.error(e)
-    res.status(401)
-    res.send('not authorized from catch block')
+    res.status(401).json({ error: 'not authorized from catch block' })
     return
   }
 }
