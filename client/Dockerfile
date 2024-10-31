@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:20-bullseye AS base
+FROM node:20-alpine AS base
 WORKDIR /app
 
 COPY package.json package-lock.json ./

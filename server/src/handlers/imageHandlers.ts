@@ -14,11 +14,11 @@ export const uploadImage = async (
   res: Response
 ): Promise<void> => {
   try {
-    upload.single('file')(req, res, async (err: any) => {
-      if (err) {
+    upload.single('file')(req, res, async (e: any) => {
+      if (e) {
         return res
           .status(500)
-          .json({ message: 'error uploading file', error: err })
+          .json({ message: 'error uploading file', error: e })
       }
 
       if (!req.file) {

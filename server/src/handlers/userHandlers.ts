@@ -38,7 +38,7 @@ export const createNewUser = async (
         res.status(409).json({ error: 'user already exists' })
         return
       } else {
-        handleDbErrors(e, res)
+        // handleDbErrors(e, res)
         return
       }
     }
@@ -55,22 +55,21 @@ export const signIn = async (
     const user = await prisma.user.findUnique({
       where: { username: req.body.username },
     })
-
     if (!user) {
-      res.status(401).json({ error: 'Invalid credentials' })
+      res.status(401).json({ error: 'invalid credentials' })
       return
     }
 
     const isValid = await comparePasswords(req.body.password, user.password)
     if (!isValid) {
-      res.status(401).json({ error: 'Invalid credentials' })
+      res.status(401).json({ error: 'invalid credentials' })
       return
     }
 
     const token = createJWT(user)
 
     res.status(200).json({
-      message: 'User signed in successfully',
+      message: 'user signed in successfully',
       user: {
         token,
         username: user.username,
@@ -78,6 +77,6 @@ export const signIn = async (
       },
     })
   } catch (error) {
-    handleDbErrors(error, res)
+    // handleDbErrors(error, res)
   }
 }
