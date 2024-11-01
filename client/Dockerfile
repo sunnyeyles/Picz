@@ -17,3 +17,5 @@ RUN npm run build
 
 FROM base AS prod
 CMD ["npm", "run", "build"]
+
+
