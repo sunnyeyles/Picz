@@ -1,7 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
-import { protect } from './modules/auth'
 import { corsOptions } from './utils/utils'
 import userRouter from './routes/userRoutes'
 import imageRouter from './routes/imageRoutes'
@@ -13,6 +12,5 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors(corsOptions))
 
 app.use(userRouter, imageRouter)
-// uploadImage()
 
 export default app
