@@ -36,6 +36,7 @@ const SignUpForm = () => {
     useSignupHandler();
 
   const handleSubmit = async (values: ISignupFormValues) => {
+    console.log(values);
     handleSignup(values);
     form.reset();
   };
