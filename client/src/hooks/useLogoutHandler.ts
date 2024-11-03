@@ -1,18 +1,13 @@
 import { useDispatch } from "react-redux";
 import { logout as logoutAction } from "../features/user/userSlice";
+import { clearAuthToken } from "../utils/authUtils";
 
 export const useLogoutHandler = () => {
   const dispatch = useDispatch();
-
+  clearAuthToken();
   const handleLogout = () => {
-    try {
-      document.cookie = "token=; path=/; max-age=0; SameSite=Strict; Secure";
-      dispatch(logoutAction());
-      console.log("Logout successful");
-    } catch (err) {
-      console.log("logout error:", err);
-    }
+    clearAuthToken();
+    dispatch(logoutAction());
   };
-
   return handleLogout;
 };

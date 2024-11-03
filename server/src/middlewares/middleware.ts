@@ -1,6 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express'
 import { validationResult } from 'express-validator'
-const app = express()
 
 export const handleInputErrors = (
   req: Request,
