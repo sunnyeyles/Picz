@@ -19,9 +19,9 @@ export const useImageUploadHandler = () => {
 
       await Promise.all(uploadPromises);
       setNotification({ color: "green", message: "All uploads successful!" });
-    } catch (err) {
-      console.error(err);
+    } catch (e) {
       setNotification({ color: "red", message: "One or more uploads failed!" });
+      throw e;
     }
   };
 

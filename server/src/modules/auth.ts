@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import { Request, Response, NextFunction } from 'express'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { User } from '@prisma/client'
 
 const jwtSecret = process.env.JWT_SECRET || 'defaultSecret'

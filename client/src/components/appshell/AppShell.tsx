@@ -3,7 +3,6 @@ import { useDisclosure } from "@mantine/hooks";
 import { NewNavBar } from "../navbar/NewNavBar";
 import { Logo } from "../logo/Logo";
 import { ColorSchemeToggle } from "../colorSchemeToggle/ColorSchemeToggle";
-
 export const Shell = () => {
   const [opened, { toggle }] = useDisclosure();
 

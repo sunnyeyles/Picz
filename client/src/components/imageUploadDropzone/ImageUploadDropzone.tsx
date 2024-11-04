@@ -11,7 +11,6 @@ export const ImageUploadDropzone = (props: Partial<DropzoneProps>) => {
 
   const handleDrop = (droppedFiles: File[]) => {
     setFiles((prevFiles) => [...prevFiles, ...droppedFiles]);
-    console.log(droppedFiles);
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -36,7 +35,7 @@ export const ImageUploadDropzone = (props: Partial<DropzoneProps>) => {
         <Dropzone
           loading={isLoading}
           onDrop={handleDrop}
-          onReject={(files) => console.log("Rejected files:", files)}
+          // onReject={(files) => console.warn("Rejected files:", files)}
           maxSize={5 * 1024 ** 2}
           accept={IMAGE_MIME_TYPE}
           {...props}
