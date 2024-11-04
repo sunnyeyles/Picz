@@ -9,6 +9,7 @@ const SignUpForm = lazy(() => import("../components/signUpForm/SignUpForm"));
 const SignInForm = lazy(() => import("../components/signInForm/SignInForm"));
 const Account = lazy(() => import("../pages/account/Account"));
 const Error = lazy(() => import("../pages/error/Error"));
+const MyImages = lazy(() => import("../pages/myImages/MyImages"));
 
 const routes: RouteObject[] = [
   {
@@ -32,6 +33,14 @@ const routes: RouteObject[] = [
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <SignInForm />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/myimages",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <MyImages />
           </Suspense>
         ),
       },

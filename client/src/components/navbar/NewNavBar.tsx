@@ -3,11 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Text } from "@mantine/core";
 import { useLogoutHandler } from "../../hooks/useLogoutHandler";
 import {
-  IconMessage2,
-  IconMessages,
-  IconReceiptRefund,
   IconLogout,
-  IconSwitchHorizontal,
   IconUser,
   IconPhotoUp,
   IconLibraryPhoto,
@@ -17,11 +13,8 @@ import classes from "./newnavbar.module.css";
 
 const navValues = [
   { label: "Upload Image", icon: IconPhotoUp, route: "/imageupload" },
-  { label: "My Images", icon: IconLibraryPhoto, route: "/signin" },
-  { label: "Reviews", icon: IconMessage2, route: "/signup" },
-  { label: "Messages", icon: IconMessages, route: "/" },
+  { label: "My Images", icon: IconLibraryPhoto, route: "/myimages" },
   { label: "User", icon: IconUser, route: "/userdetails" },
-  { label: "Refunds", icon: IconReceiptRefund, route: "/" },
   { label: "Settings", icon: IconSettings, route: "/" },
 ];
 interface INavBarProps {
@@ -67,18 +60,6 @@ export const NewNavBar = ({ toggleNavbar }: INavBarProps) => {
       <div className={classes.navbarMain}>{links}</div>
 
       <div className={classes.footer}>
-        <a
-          href="#"
-          className={classes.link}
-          onClick={(event) => {
-            event.preventDefault();
-            toggleNavbar();
-          }}
-        >
-          <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
-          <span>Change account</span>
-        </a>
-
         <a href="#" className={classes.link} onClick={handleLogout}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
