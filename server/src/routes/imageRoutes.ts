@@ -1,8 +1,12 @@
 import { Router, Request, Response } from 'express'
 
-import { uploadImage } from '../handlers/imageHandlers'
+import {
+  uploadImageHandler,
+  getAllImagesHandler,
+} from '../handlers/imageHandlers'
 const imageRouter = Router()
 
-imageRouter.post('/image/newimage', uploadImage)
+imageRouter.post('/image/newimage/', uploadImageHandler)
+imageRouter.get('/image/getallimages/', getAllImagesHandler)
 
 export default imageRouter

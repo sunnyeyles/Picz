@@ -1,5 +1,5 @@
 import multer from 'multer'
-import { uploadNewImage } from '../services/s3'
+import { uploadNewImage, getAllImages } from '../services/s3'
 import { Request, Response } from 'express'
 import { randomUUID } from 'crypto'
 
@@ -9,7 +9,7 @@ interface IRequestWithImage extends Request {
   file?: Express.Multer.File
 }
 
-export const uploadImage = async (
+export const uploadImageHandler = async (
   req: IRequestWithImage,
   res: Response
 ): Promise<void> => {
@@ -35,7 +35,21 @@ export const uploadImage = async (
 
       res.status(200).json({ message: 'image successfully uploaded' })
     })
-  } catch (error) {
-    res.status(500).json({ message: 'error uploading image', error })
+  } catch (e) {
+    res.status(500).json({ message: 'error uploading image', e })
+  }
+}
+export const getAllImagesHandler = async (res: Response) => {
+  try {
+    console.log('yo')
+    const images = await getAllImages()
+    if (images.length) {
+      res.send(200).json({ message: 'here are the images' })
+    } else if (!images.length) {
+      res.send(204).json({ message: 'no images were found' })
+    }
+  } catch (e) {
+    res.send(500).json({ message: 'server error' })
+    throw e
   }
 }

@@ -8,7 +8,6 @@ import imageRouter from './routes/imageRoutes'
 const app = express()
 app.use(morgan('dev'))
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
 app.use(cors(corsOptions))
 
 app.use(userRouter, imageRouter)

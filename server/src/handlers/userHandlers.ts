@@ -14,9 +14,10 @@ export const createNewUser = async (
   res: Response
 ): Promise<void> => {
   try {
-    console.log(req.body)
+    const user = req.body
+    console.log(user)
     const hashedPassword = await hashPassword(req.body.password)
-    const user = await prisma.user.create({
+    await prisma.user.create({
       data: {
         username: req.body.username,
         password: hashedPassword,
