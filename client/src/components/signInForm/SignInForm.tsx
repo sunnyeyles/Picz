@@ -8,7 +8,6 @@ import {
   Paper,
   LoadingOverlay,
 } from "@mantine/core";
-import { LoadingSpinner } from "../loadingspinner/LoadingSpinner";
 import { useSigninHandler } from "../../hooks/useSigninHandler";
 
 interface ISignInFormValues {
@@ -34,7 +33,7 @@ const SignInForm = () => {
 
   return (
     <Container m="md">
-      <LoadingOverlay visible={isLoading} loaderProps={<LoadingSpinner />} />
+      <LoadingOverlay visible={isLoading} />
 
       {notification && (
         <Notification

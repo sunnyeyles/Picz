@@ -4,24 +4,30 @@ interface IImageState {
   username: string | null;
   email: string | null;
   loading?: boolean;
+  imageUrls: [];
 }
 
 const initialState: IImageState = {
   username: null,
   email: null,
+  imageUrls: [],
 };
 
 export const imageSlice = createSlice({
   name: "newImage",
   initialState,
   reducers: {
-    newImage: (state, action: PayloadAction<IImageState>) => {
-      state.username = action.payload.username;
-      state.email = action.payload.email;
+    // not needed
+    // newImage: (state, action: PayloadAction<IImageState>) => {
+    //   state.username = action.payload.username;
+    //   state.email = action.payload.email;
+    // },
+    fetchAllImages: (state, action: PayloadAction<IImageState>) => {
+      state.imageUrls = action.payload.imageUrls;
     },
   },
 });
 
-export const { newImage } = imageSlice.actions;
+export const { fetchAllImages } = imageSlice.actions;
 
 export default imageSlice.reducer;

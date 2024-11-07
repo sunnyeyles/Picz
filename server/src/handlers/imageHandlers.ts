@@ -41,7 +41,6 @@ export const uploadImageHandler = async (
 }
 export const getAllImagesHandler = async (res: Response) => {
   try {
-    console.log('yo')
     const images = await getAllImages()
     if (images.length) {
       res.send(200).json({ message: 'here are the images' })

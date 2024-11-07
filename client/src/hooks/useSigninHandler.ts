@@ -25,7 +25,6 @@ export const useSigninHandler = () => {
       dispatch(login({ username, email }));
       localStorage.setItem("user: ", username);
       setNotification({ color: "green", message: "Signin successful!" });
-      console.log(localStorage);
     } catch (e) {
       const errorMessage = "signin failed!";
       setNotification({ color: "red", message: errorMessage });

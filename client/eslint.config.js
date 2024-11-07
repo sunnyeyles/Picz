@@ -34,7 +34,6 @@ export default tseslint.config(
         },
       ],
       semi: "error",
-      "no-console": "error",
     },
   }
 );
