@@ -13,7 +13,13 @@ export const imageApi = createApi({
         body: formData,
       }),
     }),
+    fetchAllImages: builder.query({
+      query: () => ({
+        url: "/image/getallimages",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useUploadImageMutation } = imageApi;
+export const { useUploadImageMutation, useFetchAllImagesQuery } = imageApi;

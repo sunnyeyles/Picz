@@ -2,8 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../features/user/userSlice";
 import imageReducer from "../features/image/imageSlice";
 import { userApi } from "../features/user/userAPI";
-const environment = import.meta.env.VITE_NODE_ENV;
 import { imageApi } from "../features/image/imageAPI";
+
+const environment = import.meta.env.VITE_NODE_ENV;
 
 export const store = configureStore({
   reducer: {
@@ -12,9 +13,8 @@ export const store = configureStore({
     image: imageReducer,
     [imageApi.reducerPath]: imageApi.reducer,
   },
-
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(userApi.middleware),
+    getDefaultMiddleware().concat(userApi.middleware, imageApi.middleware),
   devTools: environment !== "production",
 });
 
