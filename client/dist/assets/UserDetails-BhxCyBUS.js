@@ -1,1 +1,0 @@
-import{j as e}from"./index-jdee_lUX.js";const s=({heading:d})=>e.jsx("div",{children:e.jsx("h2",{children:d})}),r=()=>e.jsxs("div",{children:[e.jsx("div",{children:e.jsx(s,{heading:"Update email"})}),e.jsx("div",{children:e.jsx(s,{heading:"Update password"})})]});export{r as default};
