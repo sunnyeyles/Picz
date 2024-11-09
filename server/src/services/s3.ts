@@ -47,6 +47,7 @@ export const getAllImages = async (): Promise<IImage[] | []> => {
     const data = await s3Client.send(
       new ListObjectsV2Command({ Bucket: bucketName })
     )
+    console.log(data)
 
     if (data.Contents && data.Contents.length > 0) {
       const imageUrls = await Promise.all(

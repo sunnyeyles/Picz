@@ -1,10 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+interface IImage {
+  key: string;
+  url: string;
+}
+
+interface IFetchImagesResponse {
+  message: string;
+  images: IImage[];
+}
+
 interface IImageState {
   username: string | null;
   email: string | null;
   loading?: boolean;
-  imageUrls: [];
+  imageUrls: string[];
 }
 
 const initialState: IImageState = {
@@ -17,13 +27,8 @@ export const imageSlice = createSlice({
   name: "newImage",
   initialState,
   reducers: {
-    // not needed
-    // newImage: (state, action: PayloadAction<IImageState>) => {
-    //   state.username = action.payload.username;
-    //   state.email = action.payload.email;
-    // },
-    fetchAllImages: (state, action: PayloadAction<IImageState>) => {
-      state.imageUrls = action.payload.imageUrls;
+    fetchAllImages: (state, action: PayloadAction<IFetchImagesResponse>) => {
+      state.imageUrls = action.payload.images.map((image) => image.url); // Extract only the URLs
     },
   },
 });

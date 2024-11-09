@@ -8,14 +8,14 @@ export const imageApi = createApi({
   endpoints: (builder) => ({
     uploadImage: builder.mutation({
       query: (formData: FormData) => ({
-        url: "/image/newimage",
+        url: "api/image/newimage",
         method: "POST",
         body: formData,
       }),
     }),
     fetchAllImages: builder.query({
       query: () => ({
-        url: "/image/getallimages",
+        url: "api/image/getallimages",
         method: "GET",
       }),
     }),
