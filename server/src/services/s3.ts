@@ -35,7 +35,6 @@ export const uploadNewImage = async ({ key, body }: IImage) => {
         ContentType: 'image/jpeg',
       })
     )
-    console.log('S3 Upload Response:', Response)
     return
   } catch (err) {
     console.log(err)
@@ -47,7 +46,6 @@ export const getAllImages = async (): Promise<IImage[] | []> => {
     const data = await s3Client.send(
       new ListObjectsV2Command({ Bucket: bucketName })
     )
-    console.log(data)
 
     if (data.Contents && data.Contents.length > 0) {
       const imageUrls = await Promise.all(
@@ -66,13 +64,11 @@ export const getAllImages = async (): Promise<IImage[] | []> => {
           return null
         })
       )
-      console.log(imageUrls.filter((img) => img !== null))
       return imageUrls.filter((img) => img !== null)
     } else {
       return []
     }
   } catch (error) {
-    console.error('Error fetching images:', error)
     return []
   }
 }
