@@ -10,7 +10,6 @@ const SignInForm = lazy(() => import("../components/signInForm/SignInForm"));
 const Account = lazy(() => import("../pages/account/Account"));
 const Error = lazy(() => import("../pages/error/Error"));
 const MyImages = lazy(() => import("../pages/myImages/MyImages"));
-
 const routes: RouteObject[] = [
   {
     path: "/",

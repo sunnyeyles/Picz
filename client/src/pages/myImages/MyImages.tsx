@@ -1,10 +1,16 @@
 import { Image, Flex } from "@mantine/core";
-
 import { useFetchImages } from "../../hooks/useFetchImagesHandler";
+
+interface IImageData {
+  key: string;
+  url: string;
+}
 
 const MyImages = () => {
   const imageData = useFetchImages();
-  let imageUrls = [];
+  let imageUrls: IImageData[] = [];
+  console.log(imageData);
+
   if (imageData.isSuccess && imageData.data) {
     imageUrls = imageData.data.images;
   } else {
@@ -14,13 +20,13 @@ const MyImages = () => {
   return (
     <div>
       <Flex gap="sm">
-        {imageUrls.map((index: any) => (
+        {imageUrls.map((image) => (
           <Image
             w="200px"
             h="200px"
             radius="sm"
-            key={Math.random()}
-            src={index.url}
+            key={image.key}
+            src={image.url}
             style={{ width: "100%", height: "auto", marginBottom: "10px" }}
           />
         ))}

@@ -21,12 +21,14 @@ export const useSignupHandler = () => {
   const handleSignup = async (values: ISignupFormValues) => {
     try {
       const result = await signup(values).unwrap();
+      console.log("From handle signup hook the result: ", result);
       setNotification({ color: "green", message: "Signup successful!" });
 
       const { token, username, email } = result;
       document.cookie = `token=${token}; path=/; msax-age=${
         60 * 60 * 24
       }; SameSite=Strict; Secure`;
+      console.log("cookie: ", document.cookie);
 
       dispatch(login({ username, email }));
     } catch (err) {
