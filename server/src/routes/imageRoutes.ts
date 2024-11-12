@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express'
-
+import { protect } from '../middlewares/auth'
 import {
   uploadImageHandler,
   getAllImagesHandler,

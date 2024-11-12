@@ -6,7 +6,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useUser = () => {
   const user = useAppSelector((state) => state.user);
-  const loading = useAppSelector((state) => !!state.user.loading);
+  const loading = useAppSelector((state) => !!state.user);
   return useMemo(() => [user, loading] as const, [user, loading]);
 };
 

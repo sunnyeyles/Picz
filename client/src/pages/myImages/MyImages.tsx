@@ -1,13 +1,15 @@
 import { Image, Flex } from "@mantine/core";
 import { useFetchImages } from "../../hooks/useFetchImagesHandler";
-interface IImage {
+
+interface IImageData {
   key: string;
   url: string;
 }
 
 const MyImages = () => {
   const imageData = useFetchImages();
-  let imageUrls: IImage[] = [];
+  let imageUrls: IImageData[] = [];
+  console.log(imageData);
 
   if (imageData.isSuccess && imageData.data) {
     imageUrls = imageData.data.images;
@@ -18,7 +20,7 @@ const MyImages = () => {
   return (
     <div>
       <Flex gap="sm">
-        {imageUrls.map((image: IImage) => (
+        {imageUrls.map((image) => (
           <Image
             w="200px"
             h="200px"

@@ -25,6 +25,7 @@ export const protect = (
   next: NextFunction
 ) => {
   const bearer = req.headers.authorization
+  console.log(bearer)
   if (!bearer) {
     res.status(401)
     res.json({ message: 'not authorized, no bearer' })

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { hashPassword, comparePasswords } from '../modules/auth'
-import { createJWT } from '../modules/auth'
+import { hashPassword, comparePasswords } from '../middlewares/auth'
+import { createJWT } from '../middlewares/auth'
 import prisma from '../modules/db'
 import { Prisma, User } from '@prisma/client'
 import { handleDbErrors } from './utils'
@@ -40,7 +40,6 @@ export const createNewUser = async (
         res.status(409).json({ error: 'user already exists' })
         return
       } else {
-        // handleDbErrors(e, res)
         return
       }
     }

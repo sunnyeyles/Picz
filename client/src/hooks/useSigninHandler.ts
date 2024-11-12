@@ -22,6 +22,7 @@ export const useSigninHandler = () => {
       const { username, email } = result.user;
       const { token } = result;
       document.cookie = `token=${token}; path=/; max-age=86400; SameSite=Strict; Secure`;
+
       dispatch(login({ username, email }));
       localStorage.setItem("user: ", username);
       setNotification({ color: "green", message: "Signin successful!" });

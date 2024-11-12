@@ -28,7 +28,7 @@ export const imageSlice = createSlice({
   initialState,
   reducers: {
     fetchAllImages: (state, action: PayloadAction<IFetchImagesResponse>) => {
-      state.imageUrls = action.payload.images.map((image) => image.url); // Extract only the URLs
+      state.imageUrls = action.payload.images.map((image) => image.url);
     },
   },
 });
