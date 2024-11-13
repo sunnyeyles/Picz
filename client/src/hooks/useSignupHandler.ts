@@ -24,13 +24,9 @@ export const useSignupHandler = () => {
       console.log("From handle signup hook the result: ", result);
       setNotification({ color: "green", message: "Signup successful!" });
 
-      const { token, username, email } = result;
-      document.cookie = `token=${token}; path=/; msax-age=${
-        60 * 60 * 24
-      }; SameSite=Strict; Secure`;
-      console.log("cookie: ", document.cookie);
-
-      dispatch(login({ username, email }));
+      const { user } = result;
+      const token = user.token;
+      localStorage.setItem("SavedToken", "Bearer " + token);
     } catch (err) {
       console.log(err);
       const errorMessage = "Signup failed!";
