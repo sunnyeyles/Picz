@@ -7,6 +7,6 @@ import {
 const imageRouter = Router()
 
 imageRouter.post('/image/newimage/', uploadImageHandler)
-imageRouter.get('/image/getallimages/', getAllImagesHandler)
+imageRouter.get('/image/getallimages/', protect, getAllImagesHandler)
 
 export default imageRouter

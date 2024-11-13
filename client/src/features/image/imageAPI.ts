@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
+
 const getAuthToken = () => {
-  const cookieMatch = document.cookie.match(/token=([^;]+)/);
-  return cookieMatch ? cookieMatch[1] : null;
+  const token = localStorage.getItem("SavedToken");
+  return token;
 };
 
 export const imageApi = createApi({
@@ -14,7 +14,7 @@ export const imageApi = createApi({
     prepareHeaders: (headers) => {
       const token = getAuthToken();
       if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
+        headers.set("Authorization", token);
       }
       return headers;
     },
